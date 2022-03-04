@@ -3041,7 +3041,7 @@ MonoBehaviour:
     name: random
     date: random
     locationNotes: random
-    photoTaken: {fileID: 0}
+    photoTaken: 
     photoNotes: random
   clientInfoPanel: {fileID: 1650621082}
   borderPanel: {fileID: 566449449}
@@ -4229,7 +4229,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1238450826}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 879701296}
+        m_MethodName: SubmitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1238450826
 MonoBehaviour:
   m_ObjectHideFlags: 0

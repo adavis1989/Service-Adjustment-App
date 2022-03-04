@@ -19,7 +19,15 @@ public class OverviewPanel : MonoBehaviour, IPanel
         nameTitle.text = UIManager.Instance.activeCase.name;
         dateTitle.text = DateTime.Today.ToString();
         locationNotes.text = "LOCATION NOTES: \n" + UIManager.Instance.activeCase.locationNotes;
-        photoTaken.texture = UIManager.Instance.activeCase.photoTaken;
+        //rebuild photo and display it
+        //convert bytes to PNG
+        //convert texture2D to texture
+
+        Texture2D reconstructedImage = new Texture2D(1, 1);
+        reconstructedImage.LoadImage(UIManager.Instance.activeCase.photoTaken);
+        Texture img = (Texture)reconstructedImage;
+
+        photoTaken.texture = img;
         photoNotes.text = "PHOTO NOTES: \n" + UIManager.Instance.activeCase.photoNotes;
     }
     public void ProcessInfo()
