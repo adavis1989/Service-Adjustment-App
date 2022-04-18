@@ -31,6 +31,7 @@ namespace AWSSDK.Examples
     public class S3Example : MonoBehaviour
     {
         public string IdentityPoolId = "";
+
         public string CognitoIdentityRegion = RegionEndpoint.USEast1.SystemName;
         private RegionEndpoint _CognitoIdentityRegion
         {

@@ -41,25 +41,25 @@ public class UIManager : MonoBehaviour
 
     public void SubmitButton()
     {
-        //creat a new case to save
-        //populate the case data
-        //open a data stream to turn that object (case) into a file
-        //begin aws process
-
-        Case aweCase = new Case();
-        aweCase.caseID = activeCase.caseID;
-        aweCase.name = activeCase.name;
-        aweCase.date = activeCase.date;
-        aweCase.locationNotes = activeCase.locationNotes;
-        aweCase.photoTaken = activeCase.photoTaken;
-        aweCase.photoNotes = activeCase.photoNotes;
+        Case awsCase = new Case();
+        awsCase.caseID = activeCase.caseID;
+        awsCase.name = activeCase.name;
+        awsCase.date = activeCase.date;
+        awsCase.locationNotes = activeCase.locationNotes;
+        awsCase.photoTaken = activeCase.photoTaken;
+        awsCase.photoNotes = activeCase.photoNotes;
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/case#" + aweCase.caseID + ".dat");
-        bf.Serialize(file, aweCase);
+        string filePath = Application.persistentDataPath + "/case#" + awsCase.caseID + ".dat";
+        FileStream file = File.Create(filePath);
+        bf.Serialize(file, awsCase);
         file.Close();
 
         Debug.Log("Application Data Path: " + Application.persistentDataPath);
+
+        //Send to AWS
+
+        AWSManager.Instance.UploadToS3(filePath, awsCase.caseID);
 
     }
 
